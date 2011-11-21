@@ -86,7 +86,6 @@ class RangeIterator implements Iterator<int> {
   RangeIterator(int this._pos, int this._stop, int this._step);
 
   bool hasNext() {
-    //    return _step > 0  ? _pos < _stop : _pos > _stop;
     return _step > 0  ? _pos <= _stop : _pos >= _stop;
   }
   int next() {
