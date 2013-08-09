@@ -1,13 +1,12 @@
-#library("range");
-
-class Range implements Collection<int> {
+import "dart:collection";
+class Range extends Object with IterableMixin<int> {
   Range(int this.start, int this.stop, [int this.step = 1]) {
     if (step == 0) {
-      throw new IllegalArgumentException("step must not be 0");
+      throw new ArgumentError("step must not be 0");
     }
   }
 
-  Iterator<int> iterator() {
+  Iterator<int> get iterator {
     if (step == 1) {
       return new RangeIncrementingIterator(start, stop);
     }
@@ -16,14 +15,14 @@ class Range implements Collection<int> {
     }
   }
 
-  int get length() {
+  int get length {
     if ((step > 0 && start > stop) || (step < 0 && start < stop)) {
       return 0;
     }
     return (stop - start + step) ~/ step;
   }
 
-  bool isEmpty() => length == 0;
+  bool get isEmpty => length == 0;
 
   String toString() {
     return step == 1 ?
@@ -83,36 +82,51 @@ class Range implements Collection<int> {
 }
 
 class RangeIterator implements Iterator<int> {
-  RangeIterator(int this._pos, int this._stop, int this._step);
-
-  bool hasNext() {
-    return _step > 0  ? _pos <= _stop : _pos >= _stop;
-  }
-  int next() {
-    if (!hasNext()) {
-      throw new NoMoreElementsException();
-    }
-    var tmp = _pos;
-    _pos += _step;
-    return tmp;
-  }
 
   int _pos;
   final int _stop;
   final int _step;
+  RangeIterator(int pos, int stop, int step)
+    : _stop = stop,
+      _pos = pos-step,
+      _step = step;
+
+  int get current {
+    return _pos;
+  }
+  bool moveNext() {
+    print("pos:$_pos, stop:$_stop, step:$_step");
+    if (_step > 0  ? _pos +_step> _stop : _pos+_step < _stop) {
+      return false;
+    }
+    _pos += _step;
+    return true;
+  }
 }
 
 class RangeIncrementingIterator implements Iterator<int> {
-  RangeIncrementingIterator(int this._pos, this._stop);
-  bool hasNext() => _pos <= _stop;
-  int next() {
-    if (!hasNext()) {
-      throw new NoMoreElementsException();
-    }
-    return _pos++;
-  }
   int _pos;
   final int _stop;
+  RangeIncrementingIterator(int pos, stop) 
+    : _pos = pos-1,
+    _stop = stop;
+  
+  int get current => _pos;
+  bool moveNext() {
+    if (_pos >= _stop) {
+      return false;
+    }
+    _pos++;
+    return true;
+    //_pos <= _stop;              
+  }
+ /* int next() {
+    if (!hasNext()) {
+      throw new StateError("No more elements");
+    }
+    return _pos++;
+  }*/
+
 }
 
 Range range(int start, int stop, [int step = 1]) => new Range(start, stop, step);

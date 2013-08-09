@@ -1,0 +1,4 @@
+name: dartrange
+description: Python-like range iterator
+dependencies:
+  unittest: any
