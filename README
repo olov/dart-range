@@ -1,6 +1,5 @@
 Usage:
 
-```dart
 import "range.dart";
 
 main() {
@@ -14,4 +13,3 @@ main() {
     print (i); //0,2,4,6
   }
 }
-```
