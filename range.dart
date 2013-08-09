@@ -95,7 +95,6 @@ class RangeIterator implements Iterator<int> {
     return _pos;
   }
   bool moveNext() {
-    print("pos:$_pos, stop:$_stop, step:$_step");
     if (_step > 0  ? _pos +_step> _stop : _pos+_step < _stop) {
       return false;
     }
