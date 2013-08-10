@@ -1,4 +1,7 @@
-Usage:
+## This project has moved
+Ilya Kharlamov has taken over maintainership of dart-range, see https://github.com/ilyakharlamov/dart-range
+
+### Usage:
 
 ```dart
 import "package:range/range.dart";
