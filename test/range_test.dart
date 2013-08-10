@@ -1,4 +1,4 @@
-import "range.dart";
+import 'package:range/range.dart';
 import 'package:unittest/unittest.dart';
 
 main() {
@@ -189,9 +189,9 @@ performance_test() {
 }
 
 bench(String name, fn) {
-  var t0 = new Date.now().value;
+  var t0 = new DateTime.now().millisecondsSinceEpoch;
   fn();
-  var dt = new Date.now().value - t0;
+  var dt = new DateTime.now().millisecondsSinceEpoch - t0;
   print("$name took $dt ms");
 }
 

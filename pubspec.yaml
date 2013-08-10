@@ -1,4 +1,9 @@
-name: dartrange
+name: range
+version: 1.0.0
+authors:
+- Ilya Kharlamov <ilya.kharlamov@gmail.com>
+- Olov Lassus <olov.lassus@gmail.com>
 description: Python-like range iterator
+homepage: https://github.com/ilyakharlamov/dart-range
 dependencies:
   unittest: any

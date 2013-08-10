@@ -1,3 +1,4 @@
+library range;
 import "dart:collection";
 class Range extends Object with IterableMixin<int> {
   Range(int this.start, int this.stop, [int this.step = 1]) {
