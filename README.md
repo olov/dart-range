@@ -1,6 +1,6 @@
 Usage:
 
-import "range.dart";
+```import "package:range/range.dart";
 
 main() {
   for (int i in range(0, 5)) {
@@ -12,4 +12,4 @@ main() {
   for (int i in range(0, 7, 2)) {
     print (i); //0,2,4,6
   }
-}
+}```
