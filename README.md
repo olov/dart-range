@@ -1,6 +1,7 @@
 Usage:
 
-```import "package:range/range.dart";
+```dart
+import "package:range/range.dart";
 
 main() {
   for (int i in range(0, 5)) {
